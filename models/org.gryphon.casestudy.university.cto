@@ -1,0 +1,51 @@
+/**
+ * Model definitions for University Related Asset, Transaction and Particpants
+ */
+
+
+namespace org.gryphon.casestudy.university
+import org.gryphon.casestudy.base.*
+
+/**
+ * Digital Certificate Asset
+ */
+asset Certificate identified by certificateId {
+  o String certificateId
+  o String issuedTo
+  o String programName
+  o DateTime issuedDate
+}
+
+/**
+ * A University Participant is the governing authority
+ */
+participant University identified by memberId extends participantBase {
+}
+
+/**  University Specific transactions **/
+
+/**
+ * Issue a certificate to a student
+ * A transaction that can only be executed by the University Participant
+ */
+transaction issueCertificate {
+  o String studentID
+  o String studentName
+  o String programName
+}
+
+/**
+ * Approve affiliation of College to the University
+ * A transaction that can only be executed by the University Participant
+ */
+transaction approveAffiliation {
+    o String memberId
+}
+
+/**
+ * Notify Issue of certificate
+ * An event that can be substribed 
+ */
+event certificateIssuedEvent {
+  o String certificateId
+}

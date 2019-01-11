@@ -1,0 +1,33 @@
+/**
+ * Write your model definitions here
+ */
+
+
+namespace org.gryphon.casestudy.college
+import org.gryphon.casestudy.base.*
+
+/**
+ * A College Participant that extends the participant base
+ * Responsible for execution of college related transactions
+ */
+participant College identified by memberId extends participantBase {
+    o String[] programs optional
+    o Integer isApproved optional
+}
+
+/**  College Specific transactions **/
+
+/**
+ * Request affiliation to a University
+ */
+transaction requestAffiliation {
+    o String name
+}
+
+/**
+ * Enroll new Programs and cources
+ */
+transaction enrollProgram {
+    o String collegeId
+    o String programName
+}

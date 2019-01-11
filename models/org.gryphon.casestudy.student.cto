@@ -1,0 +1,29 @@
+/**
+ * Write your model definitions here
+ */
+
+
+namespace org.gryphon.casestudy.student
+import org.gryphon.casestudy.base.*
+
+/**
+ * A College Participant that extends the participant base
+ */
+participant Student identified by memberId extends participantBase {
+    o DateTime dob      
+    o String collegeName
+    o String programName
+    o String certificateId optional
+}
+
+/**  Student Specific transactions **/
+
+/**
+ * Student enrolls to a college and program
+ */
+transaction enrollStudent {
+    o String name
+    o DateTime dob      
+    o String collegeName
+    o String programName
+}

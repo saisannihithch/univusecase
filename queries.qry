@@ -1,0 +1,17 @@
+/**  quering the Certificate
+*/
+
+query selectCertificate {
+  description: "Fetch a specific Certificate"
+  statement:
+      SELECT org.gryphon.casestudy.university.Certificate
+          WHERE (certificateId == _$id)
+}
+
+query selectStudent {
+  description: "Fetch a specific Student"
+  statement:
+      SELECT org.gryphon.casestudy.student.Student
+          WHERE (memberId == _$id)
+}
+

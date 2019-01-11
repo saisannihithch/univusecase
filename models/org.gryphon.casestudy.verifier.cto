@@ -1,0 +1,22 @@
+/**
+ * Write your model definitions here
+ */
+
+
+namespace org.gryphon.casestudy.verifier
+import org.gryphon.casestudy.base.*
+
+/**
+ * A Verifier who has only readonly attribute to Certificate Asset
+ */
+participant Verifier identified by memberId extends participantBase {
+}
+
+/**  Verifier Specific transactions **/
+
+/**
+ * Anyone can verify if the authenticity of the certificate by its ID
+ */
+transaction verifyCertificate {
+    o String certificateId
+}

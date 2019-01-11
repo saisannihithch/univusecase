@@ -1,0 +1,98 @@
+/*** NetworkAdmin Participant ***/
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+/*** Define College Participant Access ***/
+rule CollegeResourceAccess {
+    description: "Grant College Participant full access to resources in college namespace"
+    participant: "org.gryphon.casestudy.college.College"
+    operation: ALL
+    resource: "org.gryphon.casestudy.college.**"
+    action: ALLOW
+}
+
+/*** Required for Playgroud to view all resources ***/
+rule CollegeSystemReadOnly {
+    description: "Grant College Participant readonly access to system resources"
+    participant: "org.gryphon.casestudy.college.College"
+    operation: READ
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+/*** Required to execute any Transaction ***/
+rule CollegeSystemHistorianCreate {
+    description: "Grant access to perform transactions"
+    participant: "org.gryphon.casestudy.college.College"
+    operation: CREATE
+    resource: "org.hyperledger.composer.system.HistorianRecord"
+    action: ALLOW
+}
+
+/*** Define Student Participant Access ***/
+rule StudentResourceAccess {
+    description: "Grant Student Participant full access to resources in college namespace"
+    participant: "org.gryphon.casestudy.student.Student"
+    operation: ALL
+    resource: "org.gryphon.casestudy.college.**"
+    action: ALLOW
+}
+
+/*** Required for Playgroud to view all resources ***/
+rule StudentSystemReadOnly {
+    description: "Grant Student Participant readonly access to system resources"
+    participant: "org.gryphon.casestudy.student.Student"
+    operation: READ
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+/*** Required to execute any Transaction ***/
+rule StudentSystemHistorianCreate {
+    description: "Grant access to perform transactions"
+    participant: "org.gryphon.casestudy.student.Student"
+    operation: CREATE
+    resource: "org.hyperledger.composer.system.HistorianRecord"
+    action: ALLOW
+}
+
+/*** Define University  Access ***/
+rule UniversityResourceAccess {
+    description: "Grant University Participant full access to resources in all namespaces"
+    participant: "org.gryphon.casestudy.university.University"
+    operation: ALL
+    resource: "org.gryphon.casestudy.**"
+    action: ALLOW
+}
+
+/*** Required for Playgroud to view all resources ***/
+rule UniversitySystemReadOnly {
+    description: "Grant University Participant readonly access to system resources"
+    participant: "org.gryphon.casestudy.university.University"
+    operation: READ
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+/*** Required to execute any Transaction ***/
+rule UniversitySystemHistorianCreate {
+    description: "Grant access to perform transactions"
+    participant: "org.gryphon.casestudy.university.University"
+    operation: CREATE
+    resource: "org.hyperledger.composer.system.HistorianRecord"
+    action: ALLOW
+}

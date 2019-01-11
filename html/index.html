@@ -1,0 +1,351 @@
+
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blockchain - Gryphon Casestudy University</title>
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css"  type="text/css">
+    <!-- endbuild -->
+</head>
+
+<body>
+    <div>
+        <!-- Header -->
+        <h2>Blockchain - University Usecase</h2>
+        
+        <!-- University Section -->
+        <div class="sidekick"> 
+            <div>
+                <table> <!-- Title & The University Logo -->
+                    <tr>
+                        <td> <h1>University</h1> </td>
+                        <td> <img src="./icons/uni.png"/> </td>
+                    </tr>
+                </table>
+            </div>
+            <span/>
+            <table id="tt"> <!-- Display Transactions that can be done by University -->
+                <tr>
+                    <th>Transactions</th>
+                </tr>
+                <tr>
+                    <td> <a class="js-open-modal" href="#" data-modal-id="approveAffiliation">
+                        approveAffiliation()</a> </td>
+                </tr>
+                <tr>    <!-- Will Call Javascript Method "generateCertificate()" when link clicked -->
+                    <td> <a href="#" onClick="generateCertificate()">issueCertificate()</a> </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- College Section -->
+        <div class="sidekick">
+            <table>
+                <tr> <!-- Title & The College Logo -->
+                    <td> <h1>College</h1> </td>
+                    <td> <img src="./icons/college.png"/> </td>
+                </tr>
+            </table>
+            <span/>
+            <!--div id='invoke_details'></div-->
+            <div id="hash">
+                <table id="tt"> <!-- Display Transactions that can be done by College -->
+                    <tr>
+                        <th>Transaction</th>
+                        <th>Listed College</th>
+                    </tr>
+                    <tr>
+                        <td> <a class="js-open-modal" href="#" 
+                            data-modal-id="requestAffiliation">requestAffiliation()</a> </td>
+                    </tr>
+                    <tr>
+                        <td> <h4>enrollCourse()</h4> </td>
+                        <td> <div id="college_list"></div> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Student Section -->
+        <div class="sidekick">
+            <table>  <!-- Title & The  Logo -->
+                <tr> 
+                    <td> <h1>Students</h1> </td>
+                    <td> <img src="./icons/stud.png"/> </td>
+                </tr>
+            </table>
+            <span/>
+            <table id="tt"> <!-- Display Transactions that can be done by Student -->
+                <tr> 
+                    <th>Transactions</th>
+                    <th>Student List</th>
+                </tr>
+                <tr>
+                    <td> <a href="#" onClick="takeAdmission()">takeAdmission()</a> </td>
+                    <td> <div id="student_list"></div> </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Verifier Section -->
+        <div class="sidekick">
+            <table>
+                <tr>
+                    <th> <h1>Verifier</h1> </th>
+                    <th> <img src="./icons/Verifier.png"/> </th>
+                </tr>
+            </table>
+            <span/>
+            <div id="hash">
+                <table id="tt">
+                    <tr> <td>Transactions</td> </tr>
+                    <tr> 
+                        <td> <a class="js-open-modal" href="#" 
+                            data-modal-id="verifyCertificate">verifyCertificate()</a><br/> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Verifier Section End -->
+    </div>
+
+    <!-- Historian Section -->
+    <div class="sidekick" style="width:95%">
+    <div>
+        <table>
+            <tr>
+                <td> <h1>Historian</h1> </td>
+                <td> <a href="#" onclick="getHistorian()">Fetch Historian Registry</a> </td>
+            </tr>
+        </table>
+    </div>
+    <span/>
+    <div id="historian"></div>
+    </div>
+    <!-- Historian Section End -->
+
+
+    <!-- Modal -->
+    <div id="requestAffiliation" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Request Affiliation</h3>
+        </header>
+        <div class="modal-body">
+            <input type="text" id="college_name" placeholder="College Name"></input>
+            <div id="college_progress"></div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-btn" onclick="requestAffiliation()">Submit</a>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="certificate" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Blockchain Verified Certifcate</h3>
+        </header>
+        <div class="modal-body">
+            <div id="certificate_progress"></div>
+            <br />
+            <div style="width: 800px; height: 700px; padding: 20px; text-align: center; border: 10px solid #787878;">
+                <div style="width: 750px; height: 650px; padding: 20px; text-align: center; border: 5px solid #787878;">
+                    <span style="font-size: 50px; font-weight: bold;">Certificate of Completion</span>
+                    <br />
+                    <br />
+                    <span style="font-size: 25px;">
+                        <em>This is to certify that</em>
+                    </span>
+                    <br />
+                    <br />
+                    <span style="font-size: 30px;">
+                        <strong id="_student_name_"></strong>
+                    </span>
+                    <br />
+                    <br />
+                    <span style="font-size: 25px;">
+                        <em>has completed the course</em>
+                    </span>
+                    <br />
+                    <br />
+                    <span style="font-size: 30px;" id="_program_name_"></span>
+                    <br />
+                    <br />
+                    <span style="font-size: 25px;">
+                        <em>dated</em>
+                    </span>
+                    <br />
+                    <span style="font-size: 30px;" id="_date_of_issue"></span>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="./icons/univ.png" />
+                                </td>
+                                <td>
+                                    <img src="./icons/bc-cert.png" />
+                                    <div id="__cer_id__"></div>
+                                </td>
+                                <td>
+                                    <img src="./icons/sign.png" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="approveAffiliation" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Approve Affiliation</h3>
+        </header>
+        <div class="modal-body">
+            <div id="approve_list"></div>
+            <div id="approval_progress"></div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-btn" onclick="submitApproveAffiliation()">Submit</a>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="verifyCertificate" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Verify Certificate</h3>
+        </header>
+        <div class="modal-body">
+            <input type="text" id="verify_cer_id" placeholder="Certifcate Public #ID"></input>
+            <div id="verify_progress"></div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-btn" onclick="verifyCertificate()">Submit</a>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="generateCertificate" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Issue Certificate</h3>
+        </header>
+        <div class="modal-body">
+            <div id="student_cer_list"></div>
+            <div id="certificate_progress"></div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-btn" onclick="submitGenerateCertificate()">Submit</a>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="enrollProgram" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Enroll Program</h3>
+        </header>
+        <div class="modal-body">
+            <h3 id="modal_college_id"></h3>
+            <input type="text" id="program_name" placeholder="Program Name"></input>
+            <div id="program_progress"></div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-btn" onclick="submitEnrollProgram()">Submit</a>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="takeAdmission" class="modal-box">
+        <header>
+            <a href="#" class="js-modal-close close">×</a>
+            <h3>Take Admission</h3>
+        </header>
+        <div class="modal-body">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" id="student_name" placeholder="Student Name"></input>
+                        </br>
+                        <input type="text" id="student_dob" placeholder="Date of Birth: dd/mm/yyyy"></input>
+                    </td>
+                    <td>
+                        <div id="admission_list"></div>
+                    </td>
+                </tr>
+            </table>
+            <div id="admission_progress"></div>
+        </div>
+        <footer>
+            <a href="#" class="js-modal-btn" onclick="submitTakeAdmission()">Submit</a>
+            <a href="#" class="js-modal-close">Close</a>
+        </footer>
+    </div>
+
+
+    <!-- build:js scripts/main.js -->
+    <script src="js-utils/jquery-3.1.0.min.js"></script>
+    <script src="js-utils/jquery-ui.js"></script>
+    <script src="js-utils/bootstrap.min.js"></script>
+    <script src="js/events.js"></script>
+    <!-- endbuild -->    
+    <script>
+        $(function () {
+            var appendthis = ("<div class='modal-overlay js-modal-close'></div>");
+            $('a[data-modal-id]').click(function (e) {
+                e.preventDefault();
+                $("body").append(appendthis);
+                $(".modal-overlay").fadeTo(500, 0.7);
+                var modalBox = $(this).attr('data-modal-id');
+                $('#' + modalBox).fadeIn($(this).data());
+            });
+            $(".js-modal-close, .modal-overlay").click(function () {
+                $(".modal-box, .modal-overlay").fadeOut(500, function () {
+                    $(".modal-overlay").remove();
+                });
+            });
+            $(window).resize(function () {
+                $(".modal-box").css({
+                    top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
+                    left: ($(window).width() - $(".modal-box").outerWidth()) / 2
+                });
+            });
+            $(window).resize();
+        });
+
+        function closeModal() {
+            $(".modal-box, .modal-overlay").fadeOut(500, function () {
+                $(".modal-overlay").remove();
+            });
+        }
+
+        $(document).ready(function () {
+            displayCollegeList();
+            displayStudentList();
+        });
+    </script>
+
+    
+</body>
+</html>

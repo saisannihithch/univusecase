@@ -1,0 +1,10 @@
+/**
+ * Partipant Base
+ */
+
+namespace org.gryphon.casestudy.base
+
+abstract participant participantBase {
+    o String memberId    
+    o String name
+}
